@@ -1,0 +1,298 @@
+abuser@labuser-virtual-machine:~$ cd test5
+bash: cd: test5: No such file or directory
+labuser@labuser-virtual-machine:~$ git --versio
+unknown option: --versio
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+labuser@labuser-virtual-machine:~$ git --version
+git version 2.34.1
+labuser@labuser-virtual-machine:~$ mkdir test1
+labuser@labuser-virtual-machine:~$ cd test1
+labuser@labuser-virtual-machine:~/test1$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/labuser/test1/.git/
+labuser@labuser-virtual-machine:~/test1$ git init
+Reinitialized existing Git repository in /home/labuser/test1/.git/
+labuser@labuser-virtual-machine:~/test1$ echo "test1">test1
+labuser@labuser-virtual-machine:~/test1$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	test1
+
+nothing added to commit but untracked files present (use "git add" to track)
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change1"
+[master (root-commit) fcc57a1] change1
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test1
+labuser@labuser-virtual-machine:~/test1$ git remote add origin https://github.com/archanagg2001/labtest1.git
+labuser@labuser-virtual-machine:~/test1$ git remote -v
+origin	https://github.com/archanagg2001/labtest1.git (fetch)
+origin	https://github.com/archanagg2001/labtest1.git (push)
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master
+Username for 'https://github.com': archanagg2001
+Password for 'https://archanagg2001@github.com': 
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 222 bytes | 222.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/archanagg2001/labtest1/pull/new/master
+remote: 
+To https://github.com/archanagg2001/labtest1.git
+ * [new branch]      master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ ls
+test1
+labuser@labuser-virtual-machine:~/test1$ nano test1
+labuser@labuser-virtual-machine:~/test1$ ls -l
+total 8
+-rw-rw-r-- 1 labuser labuser 6 Dec 14 04:12  test1
+-rw-rw-r-- 1 labuser labuser 6 Dec 14 04:33 'test1;'
+labuser@labuser-virtual-machine:~/test1$ ls
+ test1  'test1;'
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change2"
+[master 043c653] change2
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test1;
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master
+Username for 'https://github.com': ^C
+labuser@labuser-virtual-machine:~/test1$ git branch
+* master
+labuser@labuser-virtual-machine:~/test1$ git branch devops1
+labuser@labuser-virtual-machine:~/test1$ git push -u origin master
+Username for 'https://github.com': archanagg2001
+Password for 'https://archanagg2001@github.com': 
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 277 bytes | 277.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/archanagg2001/labtest1.git
+   fcc57a1..043c653  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ git branch devops1
+fatal: A branch named 'devops1' already exists.
+labuser@labuser-virtual-machine:~/test1$ git checkout devops1
+Switched to branch 'devops1'
+labuser@labuser-virtual-machine:~/test1$ git branch
+* devops1
+  master
+labuser@labuser-virtual-machine:~/test1$ echo "test3" >file1
+labuser@labuser-virtual-machine:~/test1$ echo "test4" >file2
+labuser@labuser-virtual-machine:~/test1$ ls -li
+total 16
+6160468 -rw-rw-r-- 1 labuser labuser 6 Dec 14 05:02  file1
+6160881 -rw-rw-r-- 1 labuser labuser 6 Dec 14 05:04  file2
+6162009 -rw-rw-r-- 1 labuser labuser 6 Dec 14 04:12  test1
+6162034 -rw-rw-r-- 1 labuser labuser 6 Dec 14 04:33 'test1;'
+labuser@labuser-virtual-machine:~/test1$ git add .
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change4"
+[devops1 08f40ff] change4
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/test1$ git push -u origin devops1
+Username for 'https://github.com': archanagg2001 
+Password for 'https://archanagg2001@github.com': 
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/archanagg2001/labtest1.git/'
+labuser@labuser-virtual-machine:~/test1$ git commit -m "change4"
+On branch devops1
+nothing to commit, working tree clean
+labuser@labuser-virtual-machine:~/test1$ git push -u origin devops1
+Username for 'https://github.com': archanagg2001
+Password for 'https://archanagg2001@github.com': 
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 346 bytes | 346.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: 
+remote: Create a pull request for 'devops1' on GitHub by visiting:
+remote:      https://github.com/archanagg2001/labtest1/pull/new/devops1
+remote: 
+To https://github.com/archanagg2001/labtest1.git
+ * [new branch]      devops1 -> devops1
+Branch 'devops1' set up to track remote branch 'devops1' from 'origin'.
+labuser@labuser-virtual-machine:~/test1$ git branch
+* devops1
+  master
+labuser@labuser-virtual-machine:~/test1$ git checkout master
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+labuser@labuser-virtual-machine:~/test1$ git merge devops1
+Updating 043c653..08f40ff
+Fast-forward
+ file1 | 1 +
+ file2 | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 file1
+ create mode 100644 file2
+labuser@labuser-virtual-machine:~/test1$ git log -p
+commit 08f40ff7708e00f63c7e4578fa01faea72f11260 (HEAD -> master, origin/devops1, devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 05:05:05 2024 -0500
+
+    change4
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..df6b0d2
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
++test3
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..d234c5e
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++test4
+
+commit 043c6538b224c8396132db3a77ffd6d49c158601 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 04:36:15 2024 -0500
+
+    change2
+
+diff --git a/test1; b/test1;
+new file mode 100644
+index 0000000..180cf83
+--- /dev/null
++++ b/test1;
+@@ -0,0 +1 @@
++test2
+
+commit fcc57a12cbe844e58bdb960f0f2fd15acf74ce5f
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 04:13:24 2024 -0500
+
+    change1
+
+diff --git a/test1 b/test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/test1
+:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+commit 08f40ff7708e00f63c7e4578fa01faea72f11260 (HEAD -> master, origin/devops1, devops1)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 05:05:05 2024 -0500
+
+    change4
+
+diff --git a/file1 b/file1
+new file mode 100644
+index 0000000..df6b0d2
+--- /dev/null
++++ b/file1
+@@ -0,0 +1 @@
++test3
+diff --git a/file2 b/file2
+new file mode 100644
+index 0000000..d234c5e
+--- /dev/null
++++ b/file2
+@@ -0,0 +1 @@
++test4
+
+commit 043c6538b224c8396132db3a77ffd6d49c158601 (origin/master)
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 04:36:15 2024 -0500
+
+    change2
+
+diff --git a/test1; b/test1;
+new file mode 100644
+index 0000000..180cf83
+--- /dev/null
++++ b/test1;
+@@ -0,0 +1 @@
++test2
+
+commit fcc57a12cbe844e58bdb960f0f2fd15acf74ce5f
+Author: David Robichaud <david.robichaud@skillsoft.com>
+Date:   Sat Dec 14 04:13:24 2024 -0500
+
+    change1
+
+diff --git a/test1 b/test1
+new file mode 100644
+index 0000000..a5bce3f
+--- /dev/null
++++ b/test1
+:
+
+
+
